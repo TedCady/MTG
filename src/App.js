@@ -2,7 +2,7 @@ import './App.css';
 import { navigate, Router } from '@reach/router';
 import { React, useState } from 'react';
 import MTGList from './components/MTGList';
-// import CardInfo from './views/CardInfo';
+import CardInfo from './views/CardInfo';
 
 
 function App() {
@@ -12,7 +12,7 @@ function App() {
         <div className="App" >
             <Router >
                 <MTGList path="/" />
-                {/* <CardInfo path = '/cards/:id'/> */}
+                <CardInfo path = '/cards/:id'/>
             </Router>
         </div>
     );

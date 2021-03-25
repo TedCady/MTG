@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-// import { Link } from '@reach/router';
+import { Link } from '@reach/router';
 
 
 
@@ -11,7 +11,7 @@ const MTGList = props => {
 
 
     useEffect(() => {
-        axios.get('https://api.magicthegathering.io/v1/cards/')
+        axios.get('https://api.magicthegathering.io/v1/cards')
             .then(response => setCards(response.data.cards))
             .catch(err => console.log(err))
 
@@ -34,13 +34,13 @@ const MTGList = props => {
                     </thead>
                 
                     <tbody>
-                        {cards.map((card, i) => {
+                        {cards.map((cards, i) => {
                             return <tr key={i}>
-                                <td>{card.name}</td>
-                                <td>{card.cmc}</td>
-                                <td>{card.colors}</td>
-                                <td>{card.type}</td>
-                                <td>{card.rarity}</td>
+                                <td><Link className= "btn btn-info" to = {`/cards/${cards.id}`}>{cards.name}</Link></td>
+                                <td>{cards.cmc}</td>
+                                <td>{cards.colors}</td>
+                                <td>{cards.type}</td>
+                                <td>{cards.rarity}</td>
 
                             </tr>
                         })}
