@@ -7,6 +7,7 @@ const CardInfo = props => {
     
     const [cardInfo, setCardInfo] = useState({})
 
+
     useEffect((request, response) => {
         axios.get(`https://api.magicthegathering.io/v1/cards/${props.id}`)
         .then(response => {
@@ -17,20 +18,19 @@ const CardInfo = props => {
 },[props])
 
 
+
+
 return (
     <div>
         <h2>{cardInfo.name}</h2>
         <p><img src={`${cardInfo.imageUrl}`} alt=""/></p>
         <ul>
             <li><b>Text: </b>{cardInfo.text}</li>
-            {/* // insert map here// */}
-            <li><b>Legality: </b>{cardInfo.legality}</li>
-            <li><b>Format: </b>{cardInfo.gameFormat}</li>
-            {/* // end map here */}
             <li><b>Power/Toughness: </b>{cardInfo.power}/{cardInfo.toughness}</li>
             <li><b>Set Name: </b>{cardInfo.setName}</li>
         </ul>
-        {/* <h3>Languages</h3> */}
+        <a href="/cards/legalities">Legality for this Card</a>
+        <h3>Languages</h3>
         <ul>
             {/* <li>{cardInfo.foreignNames[0].name}</li> */}
         </ul>
